@@ -84,6 +84,14 @@ background: '/img/posts/lr.jpeg'
             <a href="#4" style="color: blue">Read</a>
         </td>
     </tr>
+    <tr>
+        <td><a style="color: blue" href="https://www.researchgate.net/publication/336927432_A_Battery-Less_NFC_Sensor_Transponder_for_Museum_Artefact_Monitoring_A_Review_of_NFC_Sensor_Technology_and_a_Proposed_Solution" target="_blank">
+            A Battery-Less NFC Sensor Transponder for Museum Artefact Monitoring</a>
+        </td>
+        <td>
+            <a href="#5" style="color: blue">Read</a>
+        </td>
+    </tr>
 </table>
 
 <p>&nbsp;</p>
@@ -218,10 +226,62 @@ The work also provides an analysis of the system, with the aim to find the condi
     <p style="text-align: center">Impact of the antennas size on efficiency</p>
 
 </p>
-The space between the transmitter antenna and the receiver antenna also has an impact of the efficiency.
 <p>
-
+    The space between the transmitter antenna and the receiver antenna also has an impact of the efficiency.
 <p/>
+
+<p>&nbsp;</p>
+
+
+
+<h4 id="5">A Battery-Less NFC Sensor Transponder for Museum Artefact Monitoring</h4>
+
+<p>
+The paper present a battery-less NFC low-cost solution for monitoring Cultural Heritage objects. These artefacts are valuable objects housed by museums and are often stored in uncontrolled climatic (temperature/humidity) conditions, which may lead to degradation of them.
+</p>
+<p>
+One critical disadvantage nowadays of monitoring the storage conditions in these systems is due to the necessity of opening the box when analysis are needed.
+
+An NFC temperature and humidity sensor system would allow to monitor them without opening the boxes that contain these items.
+</p>
+<p>
+The proposed solution is very cheap, as it cost 5 Euro and last around 5 years:
+</p>
+<p>
+    <a href="https://ibb.co/FYpQdk2"><img src="https://i.ibb.co/GMmZrfy/Screenshot-2023-02-26-at-18-55-42.png" alt="Screenshot-2023-02-26-at-18-55-42" border="0"></a>
+</p>
+
+<p>
+The solution consists on an RF interface and a energy harvesting circuitry, which will connect to the loop antenna.
+
+The energy harvester will harvest energy from the magnetic field of an NFC Transmitter, with the help of an internal rectifier and capacitor.
+</p>
+<p>
+The harvested voltage will further be regulated using a low dropout regulator and will be used to power up an ultra power MCU and the sensors.
+</p>
+
+<p>
+The main components of the system are:
+<ul>
+    <li>l031k6 MCU</li>
+    <li>MIKROE-3331 Add-On Board, Temp&Hum 9 Click Board, SHTC3 Temperature/Humidity Sensor, MikroBUS</li>
+    <li>Dynamic NFC/RFID tag IC expansion board based on ST25DV04K for STM32 Nucleo</li>
+</ul>
+
+</p>
+
+<p>
+    <a href="https://ibb.co/GdwT5CF"><img src="https://i.ibb.co/NFhSyW7/Screenshot-2023-02-26-at-19-03-52.png" alt="Screenshot-2023-02-26-at-19-03-52" border="0"></a>
+    <p style="text-align: center">NFC sensor prototype</p>
+</p>
+
+The prototype shows that the harvested power from a smartphone with NFC is enough to run the system without a battery.
+
+<p>
+The article was really interesting because demonstrates that it is possible to power ultra low power sensor systems using NFC WPT, which is
+the main purpose of my project.
+</p>
+
 </body>
 </html>
 
