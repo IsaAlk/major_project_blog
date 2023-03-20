@@ -1,0 +1,146 @@
+---
+layout: post
+title: "Chosen IDE for programming the Microcontroller"
+subtitle: ""
+date: 2023-03-17 17:23:13 -0400
+background:
+---
+
+<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<h4 id="1">STM32 Nucleo32 (NUCLEO-L031K6)</h4>
+<p>
+    As microcontroller I initially wanted to use a
+    In <a style="color: blue" href="https://www.st.com/en/evaluation-tools/nucleo-l031k6.html" target="_blank">STM32 Nucleo32 (NUCLEO-L031K6).</a>
+    The main reason was due to the fact that it is a ultra low power
+    microcontroller, and requires very few power.
+</p>
+
+<p>
+    The IDEs I tried to use were <strong>Arduino IDE</strong> and <strong>Mbed Studio.</strong>
+</p>
+
+<p>
+    I initially tried with ArduinoIDE, because I'm most familiar/comfortable in using it and also because I saw there is
+    <a style="color: blue" href="https://github.com/stm32duino/Arduino_Core_STM32" target="_blank">support for that STM32 board</a>
+    and there are also few libraries ready to use for interacting with the sensors.
+</p>
+
+<p>
+    I followed
+    <a style="color: blue" href="https://www.sgbotic.com/index.php?dispatch=pages.view&page_id=48" target="_blank">this guide for configuring the IDE using the STM£32 board</a>,
+    and I managed to run a dummy hello world example that printed a message in the Serial console.
+
+    <p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/0f4c9RP/Screenshot-2023-03-18-at-14-46-59.png" alt="Screenshot-2023-03-18-at-14-46-59" border="0"></a>
+    </p>
+    <p style="text-align: center">Add STM32 boards in Arduino IDE</p>
+
+</p>
+
+<p>
+    I had also to install the
+    <a style="color: blue" href="https://www.st.com/en/development-tools/stm32cubeprog.html" target="_blank">STM32CubeProgrammer CLI</a>,
+    as ArduinoIDE needed it when setting an STM32 board.
+
+    <p style="text-align: center">
+        <img
+              src="https://i.ibb.co/xqJnQnv/Screenshot-2023-03-18-at-14-59-23.png" alt="Screenshot-2023-03-18-at-14-59-23" border="0"></a>
+    </p>
+    <p style="text-align: center">Issue when STM32CubeProgrammer not installed in laptop</p>
+</p>
+
+<p>
+    Then I tried to read the temperature/humidity from the SHTC3 sensor and print it in the Serial console. As there are already few libraries, I tried to use them in my example.
+    But I was not able to upload the code into the board for any of the existing libraries.
+    The reason was because the board didn't have enough space in it.
+
+
+    <p style="text-align: center">
+        <img
+                src="https://i.ibb.co/VV92vTq/Screenshot-2023-03-18-at-19-20-23.png" alt="Screenshot-2023-03-18-at-14-59-23" border="0"></a>
+    </p>
+    <p style="text-align: center">Issue when trying to load a program into the board but not enough free space</p>
+
+
+    I thought that I could have tried to implement the reading of the data from the sensor on my own, but then I decided not to do that because I would rather to use an existing library if possible and
+    , even if I did that, I could have not been able to upload the code anyway, as the amount of bytes of my implementation could have been more that the once accepted by the microcontroller.
+</p>
+
+
+
+<p>
+    At this point I started thinking that I might not be able to use STM32 Nucleo32 for my prototype, due to the lack of enough memory storage;
+    I decided to give Mbed Studio a try anyway, thinking that maybe there were light weighted libs for it.
+</p>
+
+<p>
+    Unfortunately though I didn't even manage to run a hello world example with it.
+    The reason was because this microcontroller does not support (the last version) v6 of the mbedOS, so I could not compile in it. The error log said I had to use Mbed OS v2,
+    but this version is not supported anymore. Besides, you cannot download it at all from the IDE.
+    Googling the issue I found out that this microcontroller could be compiled with mbedOS v5, but enabling just the bare-metal functionalities.
+    I did that but then the code did not compile. I think it was because I had to change the compiler (from clang to an arm one). I decided not to go down this road because
+    even if I managed to fix this issue, then I would not have been able to use all the functionalities provided by the OS (ie rtos), as I was abl to build a program just
+    if enabling the bare-metal and disabling all the other functionalities.
+</p>
+
+<h4 id="2">STM32F429 Nucleo-144</h4>
+<p>
+    Therefore I decided to use the
+    <a style="color: blue" href="https://www.st.com/en/evaluation-tools/nucleo-f429zi.html" target="_blank">STM32F429 Nucleo-144</a>,
+    instead, as this has much more memory and the NFC tag IC should be able to power this board too.
+    I firstly tried with ArduinoIDE (for the same reasons I mentioned above), but I didn't manage to set it up properly.
+    The problem this time was on showing the output in the Serial console. I found different threads talking about the issue, but the proposed solutions did not work for me.
+</p>
+
+<p>
+    Then tried with <strong>Mbed Studio</strong>. This microcontroller supports mbed os v6 (yeah!) and it had enough memory to load the entire functionalities of the OS. I was able to compile and run also
+    an example that used a
+    <a style="color: blue" href="https://os.mbed.com/users/pilotak/code/SHTC3/" target="_blank">SHTC external library</a>.
+    The program compiled and ran properly!
+    Now I can see the temperature/humidity sensor value.
+</p>
+
+<p style="text-align: center">
+    <a href="https://ibb.co/Lnvyrmj" target="_blank"><img src="https://i.ibb.co/NZ7qr5D/Screenshot-2023-03-19-at-18-03-42.png" alt="Screenshot-2023-03-19-at-18-03-42" border="0"></a>
+
+</p>
+<p style="text-align: center">Read temperature/humidity data from SHTC3 using Mbed Studio</p>
+
+
+<p>
+    Next step will be about reading the moisture data from the other sensor. Then I will need to figure out how to connect the NFC/RFID tag IC to the microcontroller and how to power it.
+</p>
+
+
+</body>
