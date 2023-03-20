@@ -1,0 +1,94 @@
+---
+layout: post
+title: "Components delivered and ready to use"
+subtitle: "(and a new one that needs to be ordered!)"
+date: 2023-03-16 10:23:13 -0400
+background:
+---
+
+<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    In <a style="color: blue" href="https://isaalk.github.io/major_project_blog/2023/03/07/System-components.html" target="_blank">this previous post</a> I posted about the components that I'm going to use in my prototype
+    of battery less sensor system to use in agriculture. We ordered the components and now they have arrived!
+
+<p>
+    <p style="text-align: center">
+        <img  width="400"
+                 height="500"
+                 src="https://i.ibb.co/XyTXpLT/Whats-App-Image-2023-03-16-at-19-10-06.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-06" border="0"></a>
+    </p>
+    <p style="text-align: center">Ultra low power MicroController - STM32L031</p>
+
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/yB9hKD6/Whats-App-Image-2023-03-16-at-19-10-05.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-05" border="0"></a>
+</p>
+<p style="text-align: center">NFC/RFID tag IC expansion board - ST25DV04K</p>
+
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/wgfJyQq/Whats-App-Image-2023-03-16-at-19-10-06-1.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-06-1" border="0"></a>
+</p>
+<p style="text-align: center">Temperature/Humidity sensors - SHTC3</p>
+
+
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/wr8fnLt/Whats-App-Image-2023-03-16-at-19-10-07.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-07" border="0"></a>
+</p>
+<p style="text-align: center">Hydro (Moisture) sensor</p>
+
+
+</p>
+</p>
+
+<p>
+    The 2 sensors use the I2C communication interface. In order to read the values from the sensors I will need to multiplex the SDA and SCL. I'm planning to do this by
+    using a TCA9548A.
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/y4P59NR/tca9548a-i2c-multiplexer-id-2717-active-components-adafruit-cool-241-800x600.jpg" alt="tca9548a-i2c-multiplexer-id-2717-active-components-adafruit-cool-241-800x600" border="0"></a>
+</p>
+<p style="text-align: center">I2C Multiplexer</p>
+
+    Something similar to <a style="color: blue" href="https://www.bluedot.space/tutorials/connect-multiple-sensors-using-i2c-multiplexer/" target="_blank">this example.</a>
+</p>
+
+<p>
+    This component missing is not a blocker, as I can test reading the sensors' data one sensor per time anyway. But it will be necessary for the final prototype.
+</p>
+
+</body>
