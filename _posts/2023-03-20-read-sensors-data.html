@@ -1,0 +1,110 @@
+---
+layout: post
+title: "Reading sensors data"
+subtitle: ""
+date: 2023-03-17 17:23:13 -0400
+background:
+---
+
+<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    As <a style="color: blue" href="https://isaalk.github.io/major_project_blog/2023/03/17/how-to-test-components.html" target="_blank">I mentioned in the previous post</a>,
+    I decided to use Mbed Studio as IDE.
+    MbedOS is used a lot and there is a great support for Nucleo boards.
+    There is also a large number of libraries ready to use.
+
+    <h4 id="1">Temperature/Humidity Sensor data</h4>
+    <p>
+        The temperature/humidity sensor I'm using is MIKROE-3331. The datasheet states that the component uses SHTC3, hence I looked for
+        existing library in the mbed ecosystem.
+        I decided to use
+        <a style="color: blue" href="https://github.com/pilotak/SHTC3" target="_blank">pilotak/SHTC3</a>,
+        I followed the example and I managed to get the proper data back:
+    </p>
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/j3svX2y"><img src="https://i.ibb.co/3SQyZqp/Screenshot-2023-03-23-at-20-52-01.png" alt="Screenshot-2023-03-23-at-20-52-01" border="0"></a>
+    </p>
+    <p style="text-align: center">Temperature/Humidity example</p>
+
+
+<p>
+    Note that as SDA and SCL ports I used PB_9 and PB_8. I figured out those ports from the nucleo datasheet:
+    <p style="text-align: center">
+        <a href="https://ibb.co/HNVrLFw"><img src="https://i.ibb.co/q0dRLyq/Screenshot-2023-03-23-at-22-15-57.png" alt="Screenshot-2023-03-23-at-22-15-57" border="0"></a>
+    </p>
+    <p style="text-align: center">Nucleo STM32 Ports-Pins mapping</p>
+</p>
+</p>
+
+
+<h4 id="2">Moisture Sensor data</h4>
+
+<p>
+    The moisture sensor I'm using is MIKROE-4131. The datasheet states that the component uses a function oscillator MIC1557 and an ADC converter MCP3221, hence I looked for
+    a existing MCP3221 library in the mbed ecosystem.
+
+    I decided to use
+    <a style="color: blue" href="https://os.mbed.com/users/DaveStyles/code/MCP3221/" target="_blank">DaveStyles/MCP3221</a>,
+    I followed the example and I managed to get the proper data back:
+
+    <p style="text-align: center">
+    <a href="https://ibb.co/MGx8vdQ"><img src="https://i.ibb.co/TbxKfyd/Screenshot-2023-03-22-at-20-54-15.png" alt="Screenshot-2023-03-22-at-20-54-15" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+    </p>
+    <p style="text-align: center">Moisture example</p>
+
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/xzsS5fC"><img src="https://i.ibb.co/XF4ZJ32/Whats-App-Image-2023-03-22-at-20-56-04-1.jpg" alt="Whats-App-Image-2023-03-22-at-20-56-04-1" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />    </p>
+    <p style="text-align: center">Reading moisture of the soil when wet</p>
+
+    My tests were OK, because as stated in the product description, when the humidity of the soil rises, the value of the output decreases; conversely, when the humidity decreases, the output value becomes higher.
+</p>
+
+<h4 id="3">Reading both sensors data in parallel</h4>
+
+<p>
+    The above examples worked standalone. Meaning that they use the same ports (PB_9 and PB_8) for the I2C connection. I thought that the microcontroller I'm using
+    had just 1 SDA and 1 SCL, and in order to address the issue I bought a I2C multiplexer. But it turned out instead (from the Nucleo STM32 Ports-Pins mapping mentioned above)
+    that there are actually others.
+    So I connected the 2 sensors directly to 2 different SDA and SCL.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/jfbpSdY"><img src="https://i.ibb.co/F3mPF91/Screenshot-2023-03-23-at-22-15-53.png" alt="Screenshot-2023-03-23-at-22-15-53" border="0"></a>
+    <p style="text-align: center">Example code for reading the sensors data in parallel</p>
+
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/3ygY4mH"><img src="https://i.ibb.co/DD0gzfn/Whats-App-Image-2023-03-24-at-18-25-31.jpg" alt="Whats-App-Image-2023-03-24-at-18-25-31" border="0"></a>
+    <p style="text-align: center">Components connections</p>
+</p>
+</body>
