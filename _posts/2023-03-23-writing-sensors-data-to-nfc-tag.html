@@ -1,0 +1,89 @@
+---
+layout: post
+title: "Writing sensors data value to the NFC Tag"
+subtitle: ""
+date: 2023-03-24 15:43:13 -0400
+background:
+---
+
+<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    The next step was to implement an example for writing/reading to/from the memory of the NFC tag.
+    This is necessary because in my project I want to use NFC for both Data Transmission and
+    WPT.
+    So I did connect the NFC tag to the microcontroller and wrote some code for doing it.
+    The code implementation is a merging of all the previous examples I published in my previous posts.
+
+    As mentioned in a previous posts, I didn't manage to connect 3 devices in parallel with I2C. Therefore in my implementation
+    I used the same SDA/SCL for the sensors, connecting them once per time.
+
+    Following some screenshots showing the results I obtained:
+
+</p>
+
+<p>
+<p style="text-align: center">
+    <a href="https://ibb.co/Kjfp1Z2"><img src="https://i.ibb.co/mC2Vxs9/Screenshot-2023-04-05-at-09-28-43.png" alt="Screenshot-2023-04-05-at-09-28-43" border="0"></a>
+<p style="text-align: center">System with 1 sensor and the NFC tag connected</p>
+</p>
+
+
+<p>
+    <p style="text-align: center">
+    <a href="https://ibb.co/w08BdbH"><img src="https://i.ibb.co/98BcpfX/Screenshot-2023-04-05-at-09-35-46.png" alt="Screenshot-2023-04-05-at-09-35-46" border="0"></a>
+    <p style="text-align: center">Console output when reading and writing the temperature/humidity value</p>
+</p>
+
+<p>
+<p style="text-align: center">
+    <a href="https://ibb.co/QvpF7bC"><img src="https://i.ibb.co/9Hc9m8V/Screenshot-2023-04-05-at-09-30-52.png" alt="Screenshot-2023-04-05-at-09-30-52" border="0"></a>
+<p style="text-align: center">Temperature/humidity values read from my smartphone</p>
+</p>
+
+<p>
+
+
+<p>
+<p style="text-align: center">
+    <a href="https://ibb.co/hB9zHGG"><img src="https://i.ibb.co/dPMY6NN/Screenshot-2023-04-05-at-09-31-44.png" alt="Screenshot-2023-04-05-at-09-31-44" border="0"></a>
+<p style="text-align: center">Console output when reading and writing the moisture value</p>
+</p>
+
+<p style="text-align: center">
+    <a href="https://ibb.co/1KjL33N"><img src="https://i.ibb.co/RPd911K/Screenshot-2023-04-05-at-09-31-55.png" alt="Screenshot-2023-04-05-at-09-31-55" border="0"></a>
+<p style="text-align: center">Moisture value read from my smartphone</p>
+</p>
+
+
+</p>
+
+</body>
