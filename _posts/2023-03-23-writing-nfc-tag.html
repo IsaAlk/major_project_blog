@@ -1,0 +1,112 @@
+---
+layout: post
+title: "Writing to the EEPROM of the NFC Tag"
+subtitle: ""
+date: 2023-03-23 15:43:13 -0400
+background:
+---
+
+<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    The next step was to implement an example for writing/reading to/from the memory of the NFC tag.
+    This is necessary because in my project I want to use NFC for both Data Transmission and
+    WPT.
+</p>
+<p>
+    I found
+    <a style="color: blue" href="https://os.mbed.com/teams/ST-Expansion-SW-Team/code/mbed-os-nfc04a1/" target="_blank">this library </a>
+    that can help for achieving my purpose. It exposes a interface for interacting with my NFC tag (NFC0401) and allows to perform operations like
+    write/read a URI and turn OFF/ON the LEDs on the Tag.
+
+    <p style="text-align: center">
+    <a href="https://ibb.co/tDK685X"><img src="https://i.ibb.co/gJ98zCV/Screenshot-2023-04-05-at-06-41-16.png" alt="Screenshot-2023-04-05-at-06-41-16" border="0"></a>
+    <p style="text-align: center">ST Expansion SW Team  NFC0401 library interface</p>
+</p>
+<p>
+    I followed the example provided to understand how it worked. The communication between the microcontroller and the tag is by I2C as well, so now
+    I need to connect 3 devices through I2C to my micro controller.
+    Looking at the datasheet of my Nucleo 144, looks like there are other I2C pins available. But they are solder bridges
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/2MvWqGF"><img src="https://i.ibb.co/JpvmnDc/Whats-App-Image-2023-03-30-at-22-49-57.jpg" alt="Whats-App-Image-2023-03-30-at-22-49-57" border="0"></a>
+    <p style="text-align: center">Addition I2C pins</p>
+</p>
+<p>
+    I tried soldering them, but then when using them they didn't work. I was not able to start an I2C connection between the microcontroller
+    and the sensors/NFC tag using those pins.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/hccq5k4"><img src="https://i.ibb.co/KDD1ZYf/Whats-App-Image-2023-03-30-at-23-04-28.jpg" alt="Whats-App-Image-2023-03-30-at-23-04-28" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+    <p style="text-align: center">Soldering I2C pins</p>
+</p>
+<p>
+    As I was not able to use the 3rd I2C connection, I retried using the I2C multiplexer.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/yQ1bcMK"><img src="https://i.ibb.co/sVGMdDc/Whats-App-Image-2023-03-22-at-21-19-25.jpg" alt="Whats-App-Image-2023-03-22-at-21-19-25" border="0"></a>
+    <p style="text-align: center">I2C muliplexer set up</p>
+</p>
+<p>
+    In the above example I tried to multiplex to the 2 sensors. I tried several libraries, but with none of them I manage to make it working.
+    I think the issue was on switching the channels when writing to a specific I2C device.
+</p>
+    Eventually I decided to connect the 2 devices per time (a sensors and the NFC tag) using the I2C and pretend like I was able to connect the 3 of them.
+    More info about this in my next post.
+<p>
+</p>
+    <h4 id="2">NFC data transmission - An hello world example</h4>
+    <p>
+        The interface provided by the library exposes 2 function for writing into the EEPROM: writeURI and writeWIFI.
+        The example provided allows to write into the memory by pressing the user button, and the value written is either a URI or WiFI connection data (SSID, Auth, Encrypt, NetKey).
+        There was not a function for writing simple text.
+        Looking at the NFC native library, I found out there was actually a way for writing simple text. I tried to implement it and to add the functionality, but
+        I didn't manage to do it.
+    </p>
+<p>
+    I actually believe that I was not able to use the first NFC tag anymore because I went into a weird state while testing the above on it. Eventually,
+    I bought a new one and didn't retry because I was worried to mess it uo too.
+</p>
+<p>
+    Therefore, I decide to use the writeURI function for writing my sensor data. The format will be stored like a URI,
+    but I think it is OK as the purpose for me is just to demonstrate that the data can be transferred and made it readable by a user
+    using a smartphone.
+    The "dummy" implementation is an adaptation of the example provided by the library. I added some conditions saying that when the button was pressed for the
+    1st time I would write the message "button1", 2nd time "button2, and 3rd time "button3".
+    <p style="text-align: center">
+        <a href="https://ibb.co/sPjTYRm"><img src="https://i.ibb.co/RS2Xwbv/Whats-App-Image-2023-03-26-at-17-02-38.jpg" alt="Whats-App-Image-2023-03-26-at-17-02-38" border="0"></a>
+    <p style="text-align: center">Dummy Example for writing into the memory of the NFC tag</p>
+</p>
+<p>
+
+</p>
+
+</body>
