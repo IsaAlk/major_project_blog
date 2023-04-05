@@ -1,0 +1,57 @@
+---
+layout: post
+title: "Issues doing the Energy Harvesting"
+subtitle: ""
+date: 2023-03-24 15:43:13 -0400
+background:
+---
+
+<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+
+<p>
+    In order to power the NFC tag using WPT and making use of the energy harvesting, the datasheet of my microcontroller states that the ST LINK
+    must be disabled, and for doing that there are 2 options:
+    <p style="text-align: center">
+        <a href="https://ibb.co/rmw7tYB"><img src="https://i.ibb.co/kxSHyjL/Whats-App-Image-2023-04-05-at-01-06-12.jpg" alt="Whats-App-Image-2023-04-05-at-01-06-12" border="0"></a>
+    <p style="text-align: center">Disable ST LINK from microcontroller</p>
+</p>
+
+<p>I tried disabling it following option 2, but I didn't succeed.
+    I would like to avoid removing the ST LINK cutting the PCB. From what I have been reading then I won’t be able to program/debug the microcontroller anymore and there could also be issues when powering it with WPT.
+</p>
+
+<p>
+    But in theory, once my code is completed and uploaded into the microcontroller, cutting the STLINK should work and anytime I power the NFC tag using
+    NFC the power will be transmitted from the TAG to my microcontroller, which will run the code and execute what I showed in my previous post.
+</p>
+
+</body>
