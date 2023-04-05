@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="https://isaalk.github.io/major_project_blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://isaalk.github.io/major_project_blog/" rel="alternate" type="text/html" /><updated>2023-04-05T13:17:41+00:00</updated><id>https://isaalk.github.io/major_project_blog/feed.xml</id><title type="html">NFC WPT with Energy Harvesting - Isa Alkhalifa</title><subtitle></subtitle><entry><title type="html">Writing sensors data value to the NFC Tag</title><link href="https://isaalk.github.io/major_project_blog/2023/03/24/writing-sensors-data-to-nfc-tag.html" rel="alternate" type="text/html" title="Writing sensors data value to the NFC Tag" /><published>2023-03-24T19:43:13+00:00</published><updated>2023-03-24T19:43:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/24/writing-sensors-data-to-nfc-tag</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/24/writing-sensors-data-to-nfc-tag.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    The next step was to implement an example for writing/reading to/from the memory of the NFC tag.
+    This is necessary because in my project I want to use NFC for both Data Transmission and
+    WPT.
+    So I did connect the NFC tag to the microcontroller and wrote some code for doing it.
+    The code implementation is a merging of all the previous examples I published in my previous posts.
+
+    As mentioned in a previous posts, I didn't manage to connect 3 devices in parallel with I2C. Therefore in my implementation
+    I used the same SDA/SCL for the sensors, connecting them once per time.
+
+    Following some screenshots showing the results I obtained:
+
+</p>
+
+<p>
+<p style="text-align: center">
+    <a href="https://ibb.co/Kjfp1Z2"><img src="https://i.ibb.co/mC2Vxs9/Screenshot-2023-04-05-at-09-28-43.png" alt="Screenshot-2023-04-05-at-09-28-43" border="0"></a>
+<p style="text-align: center">System with 1 sensor and the NFC tag connected</p>
+</p>
+
+
+<p>
+    <p style="text-align: center">
+    <a href="https://ibb.co/w08BdbH"><img src="https://i.ibb.co/98BcpfX/Screenshot-2023-04-05-at-09-35-46.png" alt="Screenshot-2023-04-05-at-09-35-46" border="0"></a>
+    <p style="text-align: center">Console output when reading and writing the temperature/humidity value</p>
+</p>
+
+<p>
+<p style="text-align: center">
+    <a href="https://ibb.co/QvpF7bC"><img src="https://i.ibb.co/9Hc9m8V/Screenshot-2023-04-05-at-09-30-52.png" alt="Screenshot-2023-04-05-at-09-30-52" border="0"></a>
+<p style="text-align: center">Temperature/humidity values read from my smartphone</p>
+</p>
+
+<p>
+
+
+<p>
+<p style="text-align: center">
+    <a href="https://ibb.co/hB9zHGG"><img src="https://i.ibb.co/dPMY6NN/Screenshot-2023-04-05-at-09-31-44.png" alt="Screenshot-2023-04-05-at-09-31-44" border="0"></a>
+<p style="text-align: center">Console output when reading and writing the moisture value</p>
+</p>
+
+<p style="text-align: center">
+    <a href="https://ibb.co/1KjL33N"><img src="https://i.ibb.co/RPd911K/Screenshot-2023-04-05-at-09-31-55.png" alt="Screenshot-2023-04-05-at-09-31-55" border="0"></a>
+<p style="text-align: center">Moisture value read from my smartphone</p>
+</p>
+
+
+</p>
+
+</body>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Report updates</title><link href="https://isaalk.github.io/major_project_blog/2023/03/24/report.html" rel="alternate" type="text/html" title="Report updates" /><published>2023-03-24T19:43:13+00:00</published><updated>2023-03-24T19:43:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/24/report</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/24/report.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    I started writing my final report. The abstract and introduction are similar to the ones done in the literature review. I talk about
+    WPT and energy harvesting, and how NFC can do it. I focus more about how this technologies allow to create battery less sensor systems
+    and I introduce the system that I have been working on: a battery less sensors systems for monitoring the soil moisture
+    and the temperature/humidity of the environment. The system is meant to be for personal use at home or
+    for monitoring plants in farms or greenhouses.
+</p>
+<p>
+    The report will have then the content of the literature review that was done and then, in the development section, I will go through
+    the process I followed for designing and implementing my system. I will show the inital thoughts, the design sketches, the issues that
+    have been found and how I overcame them.
+    Then final design with the final implementation, with pictures of the hardware and software that I used.
+</p>
+<p>
+    The testing section will be about how I tested my components and the final system in general.
+</p>
+<p>
+    Finally, in the conclusion I will go through the results that I found. particularly talking about the ones that are related to my main contribution on
+    the project.
+</p>
+</body>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Issues doing the Energy Harvesting</title><link href="https://isaalk.github.io/major_project_blog/2023/03/24/cannot-energy-harvest.html" rel="alternate" type="text/html" title="Issues doing the Energy Harvesting" /><published>2023-03-24T19:43:13+00:00</published><updated>2023-03-24T19:43:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/24/cannot-energy-harvest</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/24/cannot-energy-harvest.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+
+<p>
+    In order to power the NFC tag using WPT and making use of the energy harvesting, the datasheet of my microcontroller states that the ST LINK
+    must be disabled, and for doing that there are 2 options:
+    <p style="text-align: center">
+        <a href="https://ibb.co/rmw7tYB"><img src="https://i.ibb.co/kxSHyjL/Whats-App-Image-2023-04-05-at-01-06-12.jpg" alt="Whats-App-Image-2023-04-05-at-01-06-12" border="0"></a>
+    <p style="text-align: center">Disable ST LINK from microcontroller</p>
+</p>
+
+<p>I tried disabling it following option 2, but I didn't succeed.
+    I would like to avoid removing the ST LINK cutting the PCB. From what I have been reading then I won’t be able to program/debug the microcontroller anymore and there could also be issues when powering it with WPT.
+</p>
+
+<p>
+    But in theory, once my code is completed and uploaded into the microcontroller, cutting the STLINK should work and anytime I power the NFC tag using
+    NFC the power will be transmitted from the TAG to my microcontroller, which will run the code and execute what I showed in my previous post.
+</p>
+
+</body>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Writing to the EEPROM of the NFC Tag</title><link href="https://isaalk.github.io/major_project_blog/2023/03/23/writing-nfc-tag.html" rel="alternate" type="text/html" title="Writing to the EEPROM of the NFC Tag" /><published>2023-03-23T19:43:13+00:00</published><updated>2023-03-23T19:43:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/23/writing-nfc-tag</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/23/writing-nfc-tag.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    The next step was to implement an example for writing/reading to/from the memory of the NFC tag.
+    This is necessary because in my project I want to use NFC for both Data Transmission and
+    WPT.
+</p>
+<p>
+    I found
+    <a style="color: blue" href="https://os.mbed.com/teams/ST-Expansion-SW-Team/code/mbed-os-nfc04a1/" target="_blank">this library </a>
+    that can help for achieving my purpose. It exposes a interface for interacting with my NFC tag (NFC0401) and allows to perform operations like
+    write/read a URI and turn OFF/ON the LEDs on the Tag.
+
+    <p style="text-align: center">
+    <a href="https://ibb.co/tDK685X"><img src="https://i.ibb.co/gJ98zCV/Screenshot-2023-04-05-at-06-41-16.png" alt="Screenshot-2023-04-05-at-06-41-16" border="0"></a>
+    <p style="text-align: center">ST Expansion SW Team  NFC0401 library interface</p>
+</p>
+<p>
+    I followed the example provided to understand how it worked. The communication between the microcontroller and the tag is by I2C as well, so now
+    I need to connect 3 devices through I2C to my micro controller.
+    Looking at the datasheet of my Nucleo 144, looks like there are other I2C pins available. But they are solder bridges
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/2MvWqGF"><img src="https://i.ibb.co/JpvmnDc/Whats-App-Image-2023-03-30-at-22-49-57.jpg" alt="Whats-App-Image-2023-03-30-at-22-49-57" border="0"></a>
+    <p style="text-align: center">Addition I2C pins</p>
+</p>
+<p>
+    I tried soldering them, but then when using them they didn't work. I was not able to start an I2C connection between the microcontroller
+    and the sensors/NFC tag using those pins.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/hccq5k4"><img src="https://i.ibb.co/KDD1ZYf/Whats-App-Image-2023-03-30-at-23-04-28.jpg" alt="Whats-App-Image-2023-03-30-at-23-04-28" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+    <p style="text-align: center">Soldering I2C pins</p>
+</p>
+<p>
+    As I was not able to use the 3rd I2C connection, I retried using the I2C multiplexer.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/yQ1bcMK"><img src="https://i.ibb.co/sVGMdDc/Whats-App-Image-2023-03-22-at-21-19-25.jpg" alt="Whats-App-Image-2023-03-22-at-21-19-25" border="0"></a>
+    <p style="text-align: center">I2C muliplexer set up</p>
+</p>
+<p>
+    In the above example I tried to multiplex to the 2 sensors. I tried several libraries, but with none of them I manage to make it working.
+    I think the issue was on switching the channels when writing to a specific I2C device.
+</p>
+    Eventually I decided to connect the 2 devices per time (a sensors and the NFC tag) using the I2C and pretend like I was able to connect the 3 of them.
+    More info about this in my next post.
+<p>
+</p>
+    <h4 id="2">NFC data transmission - An hello world example</h4>
+    <p>
+        The interface provided by the library exposes 2 function for writing into the EEPROM: writeURI and writeWIFI.
+        The example provided allows to write into the memory by pressing the user button, and the value written is either a URI or WiFI connection data (SSID, Auth, Encrypt, NetKey).
+        There was not a function for writing simple text.
+        Looking at the NFC native library, I found out there was actually a way for writing simple text. I tried to implement it and to add the functionality, but
+        I didn't manage to do it.
+    </p>
+<p>
+    I actually believe that I was not able to use the first NFC tag anymore because I went into a weird state while testing the above on it. Eventually,
+    I bought a new one and didn't retry because I was worried to mess it uo too.
+</p>
+<p>
+    Therefore, I decide to use the writeURI function for writing my sensor data. The format will be stored like a URI,
+    but I think it is OK as the purpose for me is just to demonstrate that the data can be transferred and made it readable by a user
+    using a smartphone.
+    The "dummy" implementation is an adaptation of the example provided by the library. I added some conditions saying that when the button was pressed for the
+    1st time I would write the message "button1", 2nd time "button2, and 3rd time "button3".
+    <p style="text-align: center">
+        <a href="https://ibb.co/sPjTYRm"><img src="https://i.ibb.co/RS2Xwbv/Whats-App-Image-2023-03-26-at-17-02-38.jpg" alt="Whats-App-Image-2023-03-26-at-17-02-38" border="0"></a>
+    <p style="text-align: center">Dummy Example for writing into the memory of the NFC tag</p>
+</p>
+<p>
+
+</p>
+
+</body>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Reading sensors data</title><link href="https://isaalk.github.io/major_project_blog/2023/03/17/read-sensors-data.html" rel="alternate" type="text/html" title="Reading sensors data" /><published>2023-03-17T21:23:13+00:00</published><updated>2023-03-17T21:23:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/17/read-sensors-data</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/17/read-sensors-data.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    As <a style="color: blue" href="https://isaalk.github.io/major_project_blog/2023/03/17/how-to-test-components.html" target="_blank">I mentioned in the previous post</a>,
+    I decided to use Mbed Studio as IDE.
+    MbedOS is used a lot and there is a great support for Nucleo boards.
+    There is also a large number of libraries ready to use.
+
+    <h4 id="1">Temperature/Humidity Sensor data</h4>
+    <p>
+        The temperature/humidity sensor I'm using is MIKROE-3331. The datasheet states that the component uses SHTC3, hence I looked for
+        existing library in the mbed ecosystem.
+        I decided to use
+        <a style="color: blue" href="https://github.com/pilotak/SHTC3" target="_blank">pilotak/SHTC3</a>,
+        I followed the example and I managed to get the proper data back:
+    </p>
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/j3svX2y"><img src="https://i.ibb.co/3SQyZqp/Screenshot-2023-03-23-at-20-52-01.png" alt="Screenshot-2023-03-23-at-20-52-01" border="0"></a>
+    </p>
+    <p style="text-align: center">Temperature/Humidity example</p>
+
+
+<p>
+    Note that as SDA and SCL ports I used PB_9 and PB_8. I figured out those ports from the nucleo datasheet:
+    <p style="text-align: center">
+        <a href="https://ibb.co/HNVrLFw"><img src="https://i.ibb.co/q0dRLyq/Screenshot-2023-03-23-at-22-15-57.png" alt="Screenshot-2023-03-23-at-22-15-57" border="0"></a>
+    </p>
+    <p style="text-align: center">Nucleo STM32 Ports-Pins mapping</p>
+</p>
+</p>
+
+
+<h4 id="2">Moisture Sensor data</h4>
+
+<p>
+    The moisture sensor I'm using is MIKROE-4131. The datasheet states that the component uses a function oscillator MIC1557 and an ADC converter MCP3221, hence I looked for
+    a existing MCP3221 library in the mbed ecosystem.
+
+    I decided to use
+    <a style="color: blue" href="https://os.mbed.com/users/DaveStyles/code/MCP3221/" target="_blank">DaveStyles/MCP3221</a>,
+    I followed the example and I managed to get the proper data back:
+
+    <p style="text-align: center">
+    <a href="https://ibb.co/MGx8vdQ"><img src="https://i.ibb.co/TbxKfyd/Screenshot-2023-03-22-at-20-54-15.png" alt="Screenshot-2023-03-22-at-20-54-15" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+    </p>
+    <p style="text-align: center">Moisture example</p>
+
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/xzsS5fC"><img src="https://i.ibb.co/XF4ZJ32/Whats-App-Image-2023-03-22-at-20-56-04-1.jpg" alt="Whats-App-Image-2023-03-22-at-20-56-04-1" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />    </p>
+    <p style="text-align: center">Reading moisture of the soil when wet</p>
+
+    My tests were OK, because as stated in the product description, when the humidity of the soil rises, the value of the output decreases; conversely, when the humidity decreases, the output value becomes higher.
+</p>
+
+<h4 id="3">Reading both sensors data in parallel</h4>
+
+<p>
+    The above examples worked standalone. Meaning that they use the same ports (PB_9 and PB_8) for the I2C connection. I thought that the microcontroller I'm using
+    had just 1 SDA and 1 SCL, and in order to address the issue I bought a I2C multiplexer. But it turned out instead (from the Nucleo STM32 Ports-Pins mapping mentioned above)
+    that there are actually others.
+    So I connected the 2 sensors directly to 2 different SDA and SCL.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/jfbpSdY"><img src="https://i.ibb.co/F3mPF91/Screenshot-2023-03-23-at-22-15-53.png" alt="Screenshot-2023-03-23-at-22-15-53" border="0"></a>
+    <p style="text-align: center">Example code for reading the sensors data in parallel</p>
+
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/3ygY4mH"><img src="https://i.ibb.co/DD0gzfn/Whats-App-Image-2023-03-24-at-18-25-31.jpg" alt="Whats-App-Image-2023-03-24-at-18-25-31" border="0"></a>
+    <p style="text-align: center">Components connections</p>
+</p>
+</body>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Choosing Mbed Studio as IDE for programming the microcontroller</title><link href="https://isaalk.github.io/major_project_blog/2023/03/17/how-to-test-components.html" rel="alternate" type="text/html" title="Choosing Mbed Studio as IDE for programming the microcontroller" /><published>2023-03-17T21:23:13+00:00</published><updated>2023-03-17T21:23:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/17/how-to-test-components</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/17/how-to-test-components.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<h4 id="1">STM32 Nucleo32 (NUCLEO-L031K6)</h4>
+<p>
+    As microcontroller I initially wanted to use a
+    In <a style="color: blue" href="https://www.st.com/en/evaluation-tools/nucleo-l031k6.html" target="_blank">STM32 Nucleo32 (NUCLEO-L031K6).</a>
+    The main reason was due to the fact that it is a ultra low power
+    microcontroller, and requires very few power.
+</p>
+
+<p>
+    The IDEs I tried to use were <strong>Arduino IDE</strong> and <strong>Mbed Studio.</strong>
+</p>
+
+<p>
+    I initially tried with ArduinoIDE, because I'm most familiar/comfortable in using it and also because I saw there is
+    <a style="color: blue" href="https://github.com/stm32duino/Arduino_Core_STM32" target="_blank">support for that STM32 board</a>
+    and there are also few libraries ready to use for interacting with the sensors.
+</p>
+
+<p>
+    I followed
+    <a style="color: blue" href="https://www.sgbotic.com/index.php?dispatch=pages.view&page_id=48" target="_blank">this guide for configuring the IDE using the STM32 board</a>,
+    and I managed to run a dummy hello world example that printed a message in the Serial console.
+
+    <p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/0f4c9RP/Screenshot-2023-03-18-at-14-46-59.png" alt="Screenshot-2023-03-18-at-14-46-59" border="0"></a>
+    </p>
+    <p style="text-align: center">Add STM32 boards in Arduino IDE</p>
+
+</p>
+
+<p>
+    I had also to install the
+    <a style="color: blue" href="https://www.st.com/en/development-tools/stm32cubeprog.html" target="_blank">STM32CubeProgrammer CLI</a>,
+    as ArduinoIDE needed it when setting an STM32 board.
+
+    <p style="text-align: center">
+        <img
+              src="https://i.ibb.co/xqJnQnv/Screenshot-2023-03-18-at-14-59-23.png" alt="Screenshot-2023-03-18-at-14-59-23" border="0"></a>
+    </p>
+    <p style="text-align: center">Issue when STM32CubeProgrammer not installed in laptop</p>
+</p>
+
+<p>
+    Then I tried to read the temperature/humidity from the SHTC3 sensor and print it in the Serial console. As there are already few libraries, I tried to use them in my example.
+    But I was not able to upload the code into the board for any of the existing libraries.
+    The reason was because the board didn't have enough space in it.
+
+
+    <p style="text-align: center">
+        <img
+                src="https://i.ibb.co/VV92vTq/Screenshot-2023-03-18-at-19-20-23.png" alt="Screenshot-2023-03-18-at-14-59-23" border="0"></a>
+    </p>
+    <p style="text-align: center">Issue when trying to load a program into the board but not enough free space</p>
+
+
+    I thought that I could have tried to implement the reading of the data from the sensor on my own, but then I decided not to do that because I would rather to use an existing library if possible and
+    , even if I did that, I could have not been able to upload the code anyway, as the amount of bytes of my implementation could have been more that the once accepted by the microcontroller.
+</p>
+
+
+
+<p>
+    At this point I started thinking that I might not be able to use STM32 Nucleo32 for my prototype, due to the lack of enough memory storage;
+    I decided to give Mbed Studio a try anyway, thinking that maybe there were light weighted libs for it.
+</p>
+
+<p>
+    Unfortunately though I didn't even manage to run a hello world example with it.
+    The reason was because this microcontroller does not support (the last version) v6 of the mbedOS, so I could not compile in it. The error log said I had to use Mbed OS v2,
+    but this version is not supported anymore. Besides, you cannot download it at all from the IDE.
+    Googling the issue I found out that this microcontroller could be compiled with mbedOS v5, but enabling just the bare-metal functionalities.
+    I did that but then the code did not compile. I think it was because I had to change the compiler (from clang to an arm one). I decided not to go down this road because
+    even if I managed to fix this issue, then I would not have been able to use all the functionalities provided by the OS (ie rtos), as I was abl to build a program just
+    if enabling the bare-metal and disabling all the other functionalities.
+</p>
+
+<h4 id="2">STM32F429 Nucleo-144</h4>
+<p>
+    Therefore I decided to use the
+    <a style="color: blue" href="https://www.st.com/en/evaluation-tools/nucleo-f429zi.html" target="_blank">STM32F429 Nucleo-144</a>,
+    instead, as this has much more memory and the NFC tag IC should be able to power this board too.
+    I firstly tried with ArduinoIDE (for the same reasons I mentioned above), but I didn't manage to set it up properly.
+    The problem this time was on showing the output in the Serial console. I found different threads talking about the issue, but the proposed solutions did not work for me.
+</p>
+
+<p>
+    Then tried with <strong>Mbed Studio</strong>. This microcontroller supports mbed os v6 (yeah!) and it had enough memory to load the entire functionalities of the OS. I was able to compile and run also
+    an example that used a
+    <a style="color: blue" href="https://os.mbed.com/users/pilotak/code/SHTC3/" target="_blank">SHTC external library</a>.
+    The program compiled and ran properly!
+    Now I can see the temperature/humidity sensor value.
+</p>
+
+<p style="text-align: center">
+    <a href="https://ibb.co/Lnvyrmj" target="_blank"><img src="https://i.ibb.co/NZ7qr5D/Screenshot-2023-03-19-at-18-03-42.png" alt="Screenshot-2023-03-19-at-18-03-42" border="0"></a>
+
+</p>
+<p style="text-align: center">Read temperature/humidity data from SHTC3 using Mbed Studio</p>
+
+
+<p>
+    Next step will be about reading the moisture data from the other sensor. Then I will need to figure out how to connect the NFC/RFID tag IC to the microcontroller and how to power it.
+</p>
+
+
+</body>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Components delivered and ready to use</title><link href="https://isaalk.github.io/major_project_blog/2023/03/16/components-delivered.html" rel="alternate" type="text/html" title="Components delivered and ready to use" /><published>2023-03-16T14:23:13+00:00</published><updated>2023-03-16T14:23:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/16/components-delivered</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/16/components-delivered.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    In <a style="color: blue" href="https://isaalk.github.io/major_project_blog/2023/03/07/System-components.html" target="_blank">this previous post</a> I posted about the components that I'm going to use in my prototype
+    of battery less sensor system to use in agriculture. We ordered the components and now they have arrived!
+
+<p>
+    <p style="text-align: center">
+        <img  width="400"
+                 height="500"
+                 src="https://i.ibb.co/XyTXpLT/Whats-App-Image-2023-03-16-at-19-10-06.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-06" border="0"></a>
+    </p>
+    <p style="text-align: center">Ultra low power MicroController - STM32L031</p>
+
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/yB9hKD6/Whats-App-Image-2023-03-16-at-19-10-05.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-05" border="0"></a>
+</p>
+<p style="text-align: center">NFC/RFID tag IC expansion board - ST25DV04K</p>
+
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/wgfJyQq/Whats-App-Image-2023-03-16-at-19-10-06-1.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-06-1" border="0"></a>
+</p>
+<p style="text-align: center">Temperature/Humidity sensors - SHTC3</p>
+
+
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/wr8fnLt/Whats-App-Image-2023-03-16-at-19-10-07.jpg" alt="Whats-App-Image-2023-03-16-at-19-10-07" border="0"></a>
+</p>
+<p style="text-align: center">Hydro (Moisture) sensor</p>
+
+
+</p>
+</p>
+
+<p>
+    The 2 sensors use the I2C communication interface. In order to read the values from the sensors I will need to multiplex the SDA and SCL. I'm planning to do this by
+    using a TCA9548A.
+<p style="text-align: center">
+    <img  width="400"
+          height="500"
+          src="https://i.ibb.co/y4P59NR/tca9548a-i2c-multiplexer-id-2717-active-components-adafruit-cool-241-800x600.jpg" alt="tca9548a-i2c-multiplexer-id-2717-active-components-adafruit-cool-241-800x600" border="0"></a>
+</p>
+<p style="text-align: center">I2C Multiplexer</p>
+
+    Something similar to <a style="color: blue" href="https://www.bluedot.space/tutorials/connect-multiple-sensors-using-i2c-multiplexer/" target="_blank">this example.</a>
+</p>
+
+<p>
+    This component missing is not a blocker, as I can test reading the sensors' data one sensor per time anyway. But it will be necessary for the final prototype.
+</p>
+
+</body>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Block Diagram of my system</title><link href="https://isaalk.github.io/major_project_blog/2023/03/15/my-system-block-diagram.html" rel="alternate" type="text/html" title="Block Diagram of my system" /><published>2023-03-15T21:54:13+00:00</published><updated>2023-03-15T21:54:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/15/my-system-block-diagram</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/15/my-system-block-diagram.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+
+
+<p style="text-align: center">
+    <img width="800" height="600" src="https://i.ibb.co/fCgLmYk/Screenshot-2023-03-24-at-18-34-08.png" alt="Screenshot-2023-03-24-at-18-34-08" border="0">
+<p style="text-align: center">Block diagram of the proposed system</p>
+</p>
+
+</body>
+</html>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">Block Diagram of a NFC System with sensors powered by Harvested Energy</title><link href="https://isaalk.github.io/major_project_blog/2023/03/14/block-diagrams.html" rel="alternate" type="text/html" title="Block Diagram of a NFC System with sensors powered by Harvested Energy" /><published>2023-03-14T14:23:13+00:00</published><updated>2023-03-14T14:23:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/14/block-diagrams</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/14/block-diagrams.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    An NFC system is composed by:
+<ul>
+    <li>NFC Reader/Writer: This is the device that reads and writes data to the NFC tag. It can be a smartphone, tablet, or other device that is equipped with an NFC chip.</li>
+        <p>
+            <img src="https://i.ibb.co/LvG2Jpg/nfc-writer.png" alt="nfc-writer" border="0">
+            <p style="text-align: center">NFC reader/writer</p>
+        </p>
+    <li>Antenna: The NFC reader/writer contains an antenna that is used to generate an electromagnetic field that powers the NFC tag and enables communication between the two devices.</li>
+        <p style="text-align: center" >
+            <img src="https://i.ibb.co/B27sHvp/nfc-antenna.jpg" alt="nfc-antenna" border="0">
+            <p style="text-align: center">NFC Antenna</p>
+
+        </p>
+    <li>NFC Tag: This is the device that stores data and communicates with the NFC reader/writer. It can be a small sticker or embedded chip that is placed on or embedded in an object.</li>
+    <p>
+        <img src="https://i.ibb.co/yFYNRsh/nfc-reader.webp" alt="nfc-reader" border="0">
+    <p style="text-align: center">NFC tag</p>
+    </p>
+    <li>Memory: The NFC tag contains a small amount of memory that can store data such as a website URL, contact information, or other types of data.</li>
+        <p></p>
+    <li>Modulation Circuit: The NFC tag contains a modulation circuit that is used to encode and decode data between the tag and the reader/writer.</li>
+        <p></p>
+    <li>Power Management Circuit: The NFC tag contains a power management circuit that regulates the amount of power received from the reader/writer to ensure proper operation of the tag.
+        NFC works with the principle of inductive coupling between the transmitter and the receiver.</li>
+</ul>
+
+<p>NFC works with the principle of inductive coupling between the transmitter and the receiver.</p>
+<img src="https://i.ibb.co/qCrpvYF/Screenshot-2023-03-14-at-20-39-11.png" alt="Screenshot-2023-03-14-at-20-39-11" border="0">
+<p style="text-align: center">Inductive coupling between transmitter and receiver coils</p>
+
+</p>
+
+<p>&nbsp;</p>
+<h4 id="5">Block Diagram of NFC IC with WPT and Energy Harvesting</h4>
+
+<p>
+The NFC tag IC consists of two main blocks that are connected to the antenna ports.
+The first block is the wireless power transfer unit, which is responsible for harvesting energy and powering the IC.
+The second block is the communication unit block, which demodulates messages and generates the clock for data transmission to the reader.
+<p></p>
+
+<p style="text-align: center">
+    <img src="https://i.ibb.co/zVB0SN0/Screenshot-2023-03-14-at-20-46-35.png" alt="Screenshot-2023-03-14-at-20-46-35" border="0">
+<p style="text-align: center">Block diagram of NFC IC</p>
+</p>
+
+The wireless power transfer (WPT) unit is a crucial component of the NFC tag IC that enables the device to harvest energy from the electromagnetic field generated by the reader. The WPT unit consists of several components, including an RF limiter, rectifier, shunt regulator, and load modulator.
+<p></p>
+The RF limiter protects the IC from high-input voltage that could damage it by limiting the amount of power that can be delivered to the rectifier. The rectifier converts the AC power received from the antenna into DC power that can be used to power the IC. The shunt regulator maintains a constant voltage across the IC by dissipating excess energy, ensuring that the IC receives a stable supply of power.
+<p></p>
+The load modulator is a key component of the WPT unit and is responsible for modulating the impedance of the IC to ensure maximum power transfer efficiency. The load modulator can be modeled as a shunt capacitance with the antenna, and its impedance varies depending on the received power due to the nonlinear behavior of the rectifier and RF limiter. The load modulator adjusts the impedance of the IC to match that of the reader, which maximizes power transfer efficiency and ensures that the IC can harvest the maximum amount of energy possible.
+
+<p></p>
+<p>
+    The communication unit is the other main block of the NFC tag IC, responsible for demodulating the signal received from the reader, decoding and encoding data, and generating the clock signal for data transmission back to the reader. The communication unit typically consists of a demodulator, decoder, encoder, and clock generator.
+    The demodulator is responsible for recovering the digital signal from the modulated carrier wave received from the reader. The demodulator converts the modulated signal into a baseband digital signal that can be processed by the decoder.
+
+</p>
+
+<p>
+    The decoder then decodes the data received from the reader and prepares it for processing by the IC. The decoder uses error-correcting codes to detect and correct errors in the received data, ensuring that the data transmitted back to the reader is accurate.
+    The encoder is responsible for encoding the data that will be transmitted back to the reader. The encoder prepares the data for transmission by adding error-correcting codes and other control information to the data stream.
+    Finally, the clock generator generates the clock signal that synchronizes the transmission of data back to the reader. The clock generator ensures that the data is transmitted at the correct rate and timing, ensuring reliable communication between the NFC tag IC and the reader.
+</p>
+
+
+
+</p>
+
+<h4 id="6">Block Diagram of a NFC System with sensors powered by Harvested Energy</h4>
+<p>
+    Following an example of a block diagram of an NFC system with sensors powered by Harvested Energy:
+    <img src="https://i.ibb.co/KbqM7gf/Block-diagram-of-proposed-NFC-sensor-that-is-powered-using-a-smartphone.png" alt="Block-diagram-of-proposed-NFC-sensor-that-is-powered-using-a-smartphone" border="0">
+</p>
+<p>
+    The system consists of three main components: the reader, the NFC tag IC with wireless power transfer (WPT) capabilities, and the sensors.
+    The reader generates an electromagnetic field that powers the NFC tag IC and provides a means for wireless communication between the reader and the NFC tag IC.
+</p>
+<p>
+    The sensors are powered by the harvested energy from the NFC tag IC and can be used to measure various physical parameters such as temperature, pressure, humidity, and more.
+</p>
+</body>
+</html>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry><entry><title type="html">System’s Components</title><link href="https://isaalk.github.io/major_project_blog/2023/03/07/System-components.html" rel="alternate" type="text/html" title="System’s Components" /><published>2023-03-07T15:42:13+00:00</published><updated>2023-03-07T15:42:13+00:00</updated><id>https://isaalk.github.io/major_project_blog/2023/03/07/System%20components</id><content type="html" xml:base="https://isaalk.github.io/major_project_blog/2023/03/07/System-components.html"><![CDATA[<html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>
+<ul>
+    <li>
+        <a style="color: blue" href="https://uk.farnell.com/mikroelektronika/mikroe-3331/temp-hum-9-click-board/dp/3013737" target="_blank">Add-On Board, Temp&Hum 9 Click Board, SHTC3 Temperature/Humidity Sensor, MikroBUS</a>
+    </li>
+    <li>
+        <a style="color: blue" href="https://thedebugstore.com/products/mikroe-4131-hydro-probe-click-board-uk" target="_blank">Hydro Probe Click Board
+        </a>
+    </li>
+    <li>
+        <a style="color: blue" href="https://uk.farnell.com/stmicroelectronics/nucleo-l031k6/dev-board-nucleo-32-mcu/dp/2517901" target="_blank">Development Board, STM32L031K6 MCU, On-Board Debugger, Arduino Compatible
+        </a>
+    </li>
+    <li>
+        <a style="color: blue" href="https://www.st.com/en/ecosystems/x-nucleo-nfc04a1.html#st_all-features_sec-nav-tab" target="_blank">Dynamic NFC/RFID tag IC expansion board based on ST25DV04K for STM32 Nucleo
+        </a>
+    </li>
+
+</ul>
+</p>
+
+
+</body>
+</html>]]></content><author><name></name></author><summary type="html"><![CDATA[#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }]]></summary></entry></feed>

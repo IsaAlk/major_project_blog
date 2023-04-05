@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Reading sensors data - NFC WPT with Energy Harvesting - Isa Alkhalifa
+    
+  </title>
+
+  <meta name="description" content="#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/major_project_blog/assets/main.css">
+  <link rel="canonical" href="https://isaalk.github.io/major_project_blog/2023/03/17/read-sensors-data.html">
+  <link rel="alternate" type="application/rss+xml" title="NFC WPT with Energy Harvesting - Isa Alkhalifa" href="/major_project_blog/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/major_project_blog/">NFC WPT with Energy Harvesting - Isa Alkhalifa</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/literature-review">Literature Review</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/gantt-chart">Gantt Chart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+  <header class="masthead">
+    
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Reading sensors data</h1>
+            
+            <h2 class="subheading"></h2>
+            
+            <span class="meta">Posted by
+              <a href="#"></a>
+              on March 17, 2023 &middot; <span class="reading-time" title="Estimated read time">
+  
+   3 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    As <a style="color: blue" href="https://isaalk.github.io/major_project_blog/2023/03/17/how-to-test-components.html" target="_blank">I mentioned in the previous post</a>,
+    I decided to use Mbed Studio as IDE.
+    MbedOS is used a lot and there is a great support for Nucleo boards.
+    There is also a large number of libraries ready to use.
+
+    <h4 id="1">Temperature/Humidity Sensor data</h4>
+    <p>
+        The temperature/humidity sensor I'm using is MIKROE-3331. The datasheet states that the component uses SHTC3, hence I looked for
+        existing library in the mbed ecosystem.
+        I decided to use
+        <a style="color: blue" href="https://github.com/pilotak/SHTC3" target="_blank">pilotak/SHTC3</a>,
+        I followed the example and I managed to get the proper data back:
+    </p>
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/j3svX2y"><img src="https://i.ibb.co/3SQyZqp/Screenshot-2023-03-23-at-20-52-01.png" alt="Screenshot-2023-03-23-at-20-52-01" border="0"></a>
+    </p>
+    <p style="text-align: center">Temperature/Humidity example</p>
+
+
+<p>
+    Note that as SDA and SCL ports I used PB_9 and PB_8. I figured out those ports from the nucleo datasheet:
+    <p style="text-align: center">
+        <a href="https://ibb.co/HNVrLFw"><img src="https://i.ibb.co/q0dRLyq/Screenshot-2023-03-23-at-22-15-57.png" alt="Screenshot-2023-03-23-at-22-15-57" border="0"></a>
+    </p>
+    <p style="text-align: center">Nucleo STM32 Ports-Pins mapping</p>
+</p>
+</p>
+
+
+<h4 id="2">Moisture Sensor data</h4>
+
+<p>
+    The moisture sensor I'm using is MIKROE-4131. The datasheet states that the component uses a function oscillator MIC1557 and an ADC converter MCP3221, hence I looked for
+    a existing MCP3221 library in the mbed ecosystem.
+
+    I decided to use
+    <a style="color: blue" href="https://os.mbed.com/users/DaveStyles/code/MCP3221/" target="_blank">DaveStyles/MCP3221</a>,
+    I followed the example and I managed to get the proper data back:
+
+    <p style="text-align: center">
+    <a href="https://ibb.co/MGx8vdQ"><img src="https://i.ibb.co/TbxKfyd/Screenshot-2023-03-22-at-20-54-15.png" alt="Screenshot-2023-03-22-at-20-54-15" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+    </p>
+    <p style="text-align: center">Moisture example</p>
+
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/xzsS5fC"><img src="https://i.ibb.co/XF4ZJ32/Whats-App-Image-2023-03-22-at-20-56-04-1.jpg" alt="Whats-App-Image-2023-03-22-at-20-56-04-1" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />    </p>
+    <p style="text-align: center">Reading moisture of the soil when wet</p>
+
+    My tests were OK, because as stated in the product description, when the humidity of the soil rises, the value of the output decreases; conversely, when the humidity decreases, the output value becomes higher.
+</p>
+
+<h4 id="3">Reading both sensors data in parallel</h4>
+
+<p>
+    The above examples worked standalone. Meaning that they use the same ports (PB_9 and PB_8) for the I2C connection. I thought that the microcontroller I'm using
+    had just 1 SDA and 1 SCL, and in order to address the issue I bought a I2C multiplexer. But it turned out instead (from the Nucleo STM32 Ports-Pins mapping mentioned above)
+    that there are actually others.
+    So I connected the 2 sensors directly to 2 different SDA and SCL.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/jfbpSdY"><img src="https://i.ibb.co/F3mPF91/Screenshot-2023-03-23-at-22-15-53.png" alt="Screenshot-2023-03-23-at-22-15-53" border="0"></a>
+    <p style="text-align: center">Example code for reading the sensors data in parallel</p>
+
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/3ygY4mH"><img src="https://i.ibb.co/DD0gzfn/Whats-App-Image-2023-03-24-at-18-25-31.jpg" alt="Whats-App-Image-2023-03-24-at-18-25-31" border="0"></a>
+    <p style="text-align: center">Components connections</p>
+</p>
+</body>
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/major_project_blog/2023/03/17/how-to-test-components.html" data-toggle="tooltip" data-placement="top" title="Choosing Mbed Studio as IDE for programming the microcontroller">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/major_project_blog/2023/03/23/writing-nfc-tag.html" data-toggle="tooltip" data-placement="top" title="Writing to the EEPROM of the NFC Tag">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p class="copyright text-muted">Copyright &copy;  2023</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/major_project_blog/assets/vendor/startbootstrap-clean-blog/js/scripts.js"></script>
+
+<script src="/major_project_blog/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>

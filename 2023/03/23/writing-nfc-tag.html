@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    Writing to the EEPROM of the NFC Tag - NFC WPT with Energy Harvesting - Isa Alkhalifa
+    
+  </title>
+
+  <meta name="description" content="#customers { font-family: Arial, Helvetica, sans-serif; border-collapse: collapse; width: 100%; }">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/major_project_blog/assets/main.css">
+  <link rel="canonical" href="https://isaalk.github.io/major_project_blog/2023/03/23/writing-nfc-tag.html">
+  <link rel="alternate" type="application/rss+xml" title="NFC WPT with Energy Harvesting - Isa Alkhalifa" href="/major_project_blog/feed.xml">
+
+</head>
+
+
+<body>
+
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/major_project_blog/">NFC WPT with Energy Harvesting - Isa Alkhalifa</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/literature-review">Literature Review</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/gantt-chart">Gantt Chart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/major_project_blog/about">About</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+  <header class="masthead">
+    
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Writing to the EEPROM of the NFC Tag</h1>
+            
+            <h2 class="subheading"></h2>
+            
+            <span class="meta">Posted by
+              <a href="#"></a>
+              on March 23, 2023 &middot; <span class="reading-time" title="Estimated read time">
+  
+   4 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <html>
+<head>
+    <style>
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<p>&nbsp;</p>
+<p>
+    The next step was to implement an example for writing/reading to/from the memory of the NFC tag.
+    This is necessary because in my project I want to use NFC for both Data Transmission and
+    WPT.
+</p>
+<p>
+    I found
+    <a style="color: blue" href="https://os.mbed.com/teams/ST-Expansion-SW-Team/code/mbed-os-nfc04a1/" target="_blank">this library </a>
+    that can help for achieving my purpose. It exposes a interface for interacting with my NFC tag (NFC0401) and allows to perform operations like
+    write/read a URI and turn OFF/ON the LEDs on the Tag.
+
+    <p style="text-align: center">
+    <a href="https://ibb.co/tDK685X"><img src="https://i.ibb.co/gJ98zCV/Screenshot-2023-04-05-at-06-41-16.png" alt="Screenshot-2023-04-05-at-06-41-16" border="0"></a>
+    <p style="text-align: center">ST Expansion SW Team  NFC0401 library interface</p>
+</p>
+<p>
+    I followed the example provided to understand how it worked. The communication between the microcontroller and the tag is by I2C as well, so now
+    I need to connect 3 devices through I2C to my micro controller.
+    Looking at the datasheet of my Nucleo 144, looks like there are other I2C pins available. But they are solder bridges
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/2MvWqGF"><img src="https://i.ibb.co/JpvmnDc/Whats-App-Image-2023-03-30-at-22-49-57.jpg" alt="Whats-App-Image-2023-03-30-at-22-49-57" border="0"></a>
+    <p style="text-align: center">Addition I2C pins</p>
+</p>
+<p>
+    I tried soldering them, but then when using them they didn't work. I was not able to start an I2C connection between the microcontroller
+    and the sensors/NFC tag using those pins.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/hccq5k4"><img src="https://i.ibb.co/KDD1ZYf/Whats-App-Image-2023-03-30-at-23-04-28.jpg" alt="Whats-App-Image-2023-03-30-at-23-04-28" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'></a><br />
+    <p style="text-align: center">Soldering I2C pins</p>
+</p>
+<p>
+    As I was not able to use the 3rd I2C connection, I retried using the I2C multiplexer.
+
+    <p style="text-align: center">
+        <a href="https://ibb.co/yQ1bcMK"><img src="https://i.ibb.co/sVGMdDc/Whats-App-Image-2023-03-22-at-21-19-25.jpg" alt="Whats-App-Image-2023-03-22-at-21-19-25" border="0"></a>
+    <p style="text-align: center">I2C muliplexer set up</p>
+</p>
+<p>
+    In the above example I tried to multiplex to the 2 sensors. I tried several libraries, but with none of them I manage to make it working.
+    I think the issue was on switching the channels when writing to a specific I2C device.
+</p>
+    Eventually I decided to connect the 2 devices per time (a sensors and the NFC tag) using the I2C and pretend like I was able to connect the 3 of them.
+    More info about this in my next post.
+<p>
+</p>
+    <h4 id="2">NFC data transmission - An hello world example</h4>
+    <p>
+        The interface provided by the library exposes 2 function for writing into the EEPROM: writeURI and writeWIFI.
+        The example provided allows to write into the memory by pressing the user button, and the value written is either a URI or WiFI connection data (SSID, Auth, Encrypt, NetKey).
+        There was not a function for writing simple text.
+        Looking at the NFC native library, I found out there was actually a way for writing simple text. I tried to implement it and to add the functionality, but
+        I didn't manage to do it.
+    </p>
+<p>
+    I actually believe that I was not able to use the first NFC tag anymore because I went into a weird state while testing the above on it. Eventually,
+    I bought a new one and didn't retry because I was worried to mess it uo too.
+</p>
+<p>
+    Therefore, I decide to use the writeURI function for writing my sensor data. The format will be stored like a URI,
+    but I think it is OK as the purpose for me is just to demonstrate that the data can be transferred and made it readable by a user
+    using a smartphone.
+    The "dummy" implementation is an adaptation of the example provided by the library. I added some conditions saying that when the button was pressed for the
+    1st time I would write the message "button1", 2nd time "button2, and 3rd time "button3".
+    <p style="text-align: center">
+        <a href="https://ibb.co/sPjTYRm"><img src="https://i.ibb.co/RS2Xwbv/Whats-App-Image-2023-03-26-at-17-02-38.jpg" alt="Whats-App-Image-2023-03-26-at-17-02-38" border="0"></a>
+    <p style="text-align: center">Dummy Example for writing into the memory of the NFC tag</p>
+</p>
+<p>
+
+</p>
+
+</body>
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/major_project_blog/2023/03/17/read-sensors-data.html" data-toggle="tooltip" data-placement="top" title="Reading sensors data">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/major_project_blog/2023/03/24/writing-sensors-data-to-nfc-tag.html" data-toggle="tooltip" data-placement="top" title="Writing sensors data value to the NFC Tag">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <p class="copyright text-muted">Copyright &copy;  2023</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/major_project_blog/assets/vendor/startbootstrap-clean-blog/js/scripts.js"></script>
+
+<script src="/major_project_blog/assets/scripts.js"></script>
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+</body>
+
+</html>
